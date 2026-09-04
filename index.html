@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F6EFE4" />
+    <title></title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main aria-label="An animated watercolor bouquet">
+      <div id="bouquet"></div>
+      <div class="mode-switch" data-mode-switch role="group" aria-label="Animation mode">
+        <button
+          class="mode-switch__button"
+          type="button"
+          data-mode="bloom"
+          aria-label="Bloom animation"
+          aria-pressed="true"
+        >
+          <span class="mode-switch__glyph mode-switch__glyph--bloom" aria-hidden="true"></span>
+        </button>
+        <button
+          class="mode-switch__button"
+          type="button"
+          data-mode="ripple"
+          aria-label="Ripple animation"
+          aria-pressed="false"
+        >
+          <span class="mode-switch__glyph mode-switch__glyph--ripple" aria-hidden="true"></span>
+        </button>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
