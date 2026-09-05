@@ -13,9 +13,9 @@
   let frame = 0;
   let ready = false;
   const presets = {
-    sis1: ['#ff680a', '#ff2796'],
-    moon: ['#945bff', '#47caff'],
-    dawn: ['#ffc629', '#ff645e'],
+    sis1: ['#e99b7c', '#d990a6'],
+    moon: ['#a79bbc', '#a4becb'],
+    dawn: ['#dfbc7d', '#d99b91'],
     original: ['#b88571', '#a69abd'],
   };
   let preset = 'sis1';
@@ -60,13 +60,6 @@
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
     }
 
-    float glint(vec2 p) {
-      float core = exp(-dot(p, p) / .000018);
-      float rays = exp(-abs(p.x) * 950. - abs(p.y) * 95.)
-        + exp(-abs(p.x) * 95. - abs(p.y) * 950.);
-      return core + rays * .55;
-    }
-
     vec3 pigment(vec3 source, vec2 q) {
       // Broad flower masks keep one family pink instead of tinting every warm vein orange.
       float companion = 1. - smoothstep(.72, 1.15, length((q - vec2(.24, .32)) / vec2(.19, .16)));
@@ -76,7 +69,10 @@
       float warm = 1. - companion;
       vec3 tint = mix(colourB, colourA, warm);
       float light = dot(source, vec3(.25, .6, .15));
-      vec3 dyed = mix(tint * (.38 + light * .9), vec3(1., .97, .94), smoothstep(.50, .91, light) * .78);
+      // Pigment shares the source shading instead of emitting a saturated flat colour.
+      vec3 dyed = tint * (.64 + light * .45);
+      dyed = mix(dyed, vec3(.97, .91, .85), smoothstep(.42, .88, light) * .38);
+      dyed = mix(dyed, source, .08);
       float petals = 1. - smoothstep(.72, .91, q.y);
       return mix(source, dyed, recolour * petals);
     }
@@ -115,9 +111,9 @@
       float radius = length(orbit / vec2(.48, .26));
       float halo = exp(-pow((radius - .96) * 3.2, 2.));
       vec3 aura = mix(colourA, colourB, .5 + .5 * sin(atan(orbit.y, orbit.x) * 2. + time * .045));
-      bg = mix(bg, mix(vec3(1.), aura, .32), halo * .25 * appear);
-      float ring = (1. - smoothstep(.001, .004, abs(radius - 1.))) * .16;
-      ring += (1. - smoothstep(.001, .003, abs(length(orbit / vec2(.40, .32)) - 1.))) * .09;
+      bg = mix(bg, mix(vec3(1.), aura, .32), halo * .045 * appear);
+      float ring = (1. - smoothstep(.001, .004, abs(radius - 1.))) * .07;
+      ring += (1. - smoothstep(.001, .003, abs(length(orbit / vec2(.40, .32)) - 1.))) * .04;
       bg = mix(bg, mix(aura, vec3(.65, .53, .7), .6), ring * appear);
 
       // Sparse, stationary dust has a slow light cycle. Avoid a moving starfield.
@@ -126,14 +122,7 @@
       float chance = step(.87, hash(cell + 17.));
       float twinkle = .55 + .45 * sin(time * .55 + hash(cell) * 6.28);
       float dust = exp(-dot(speck, speck) / 1.2) * chance * twinkle;
-      float cross = exp(-abs(speck.x) * 3. - abs(speck.y) * .6) + exp(-abs(speck.x) * .6 - abs(speck.y) * 3.);
-      bg = mix(bg, aura * .65, (dust * .45 + cross * chance * .1) * halo * appear);
-      float stars = glint(orbit - vec2(-.39, -.15))
-        + glint(orbit - vec2(.24, -.226))
-        + glint(orbit - vec2(.435, .11))
-        + glint(orbit - vec2(-.17, .243));
-      bg = mix(bg, vec3(.71, .47, .66), min(stars, 1.) * .32 * appear);
-      bg += vec3(.10, .08, .13) * min(stars, 1.) * appear;
+      bg = mix(bg, vec3(.70, .62, .65), dust * .10 * halo * appear);
       bg = bud(bg, point, vec2(-.37, -.25), .058, -.8, 10.);
       bg = bud(bg, point, vec2(.35, -.35), .045, .8, 12.);
       bg = bud(bg, point, vec2(.40, .17), .032, 1.8, 14.);
@@ -153,10 +142,6 @@
 
       // The source paper must not travel with the reveal as tan bands around stems.
       vec3 dyed = pigment(source, q);
-      // Thin bright veins catch spectral light as the reveal travels through the petals.
-      float vein = smoothstep(.52, .85, dot(source, vec3(.25, .6, .15)));
-      vec3 sheen = mix(vec3(.82, .87, 1.), vec3(1., .83, .72), .5 + .5 * sin(q.y * 17. + q.x * 11.));
-      dyed = mix(dyed, sheen, vein * .17);
       vec3 colour = mix(bg, dyed, exposure * feather * presence(source));
       gl_FragColor = vec4(colour, 1.);
     }

@@ -12,7 +12,7 @@ light cycle. The colour symbol opens a wordless palette. No interaction is requi
 
 ## Palette and composition
 
-`sis1` starts with bright orange (`#ff680a`) and pink (`#ff2796`). Three other
+`sis1` starts with apricot orange (`#e99b7c`) and carnation pink (`#d990a6`). Three other
 presets offer moon, dawn, and natural source colours. The split swatches select
 presets. The opposing arrows cycle them. Two native colour wells set any custom
 pair. The circular arrow replays the reveal. Escape or an outside press closes
@@ -24,8 +24,9 @@ retain their source colours. Choices reset to `sis1` on reload.
 
 The p5.js reference contributes an uneven cluster, a dominant central bloom,
 loose peripheral buds, and fine curved traces. A slight tilt and three satellite
-buds open the composition. Spectral highlights, elliptical orbits, and sparse
-glints supply the astral treatment. The photographic material remains unchanged.
+buds open the composition. Faint elliptical traces and quiet dust supply depth.
+The colours share the source shading to feel like carnation pigment. Flare rays
+and spectral highlights are removed. The photographic material remains unchanged.
 
 The owner explicitly requests full playback regardless of reduced-motion settings
 for this private, single-viewer piece. It pauses its animation loop in hidden tabs.

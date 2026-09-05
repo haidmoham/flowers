@@ -2,6 +2,10 @@
 
 ## Wordless palettes and astral light
 
+The latest correction calls for carnation pigment rather than lens flares.
+Use soft apricot and pink in `sis1`. Preserve shade in the folds. Remove flare
+rays and spectral sheen. Keep the aura and orbital traces faint.
+
 The current request retains the approved translucent material and brings back
 directional cues from the p5.js composition. Use its uneven cluster, loose buds,
 and curved traces. Do not change the source photograph into a p5.js rendering.

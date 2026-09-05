@@ -1,5 +1,14 @@
 # Clustered ivory bouquet validation
 
+## Carnation colour correction
+
+Checked on 2026-09-04. Deployment: `dpl_DPseHx2RQ4hAEQmUrZmXv9YZL7sh`.
+The user rejected the harsh colours and lens-flare treatment. `sis1` now uses
+apricot and carnation pink. All tinted presets are softer. Source shading drives
+the pigment, with cream highlights. Spectral sheen and flare rays are removed.
+The aura, traces, and dust are reduced. Browser inspection confirms the softer
+petals and a working shader. JavaScript syntax and diff checks pass.
+
 ## Wordless astral palette revision
 
 Checked and deployed on 2026-09-04 after explicit approval for both domains.
