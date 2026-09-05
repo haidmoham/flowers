@@ -1,46 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6efe4" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Astral Flowers</title>
-    <link rel="icon" href="icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preload" href="material.webp" as="image" />
-    <link rel="preload" href="arrival.png" as="image" />
-  </head>
-  <body>
-    <main aria-label="An astral bouquet on ivory">
-      <canvas id="herbarium" role="img" aria-describedby="art-description"></canvas>
-      <p id="art-description" class="sr-only">
-        Fine stems gather into clusters of translucent flowers on warm ivory.
-        Coloured petals open among delicate folds and exposed veins.
-        Loose buds, luminous dust, and fine orbits surround the bouquet.
-      </p>
-    </main>
-    <details class="palette">
-      <summary aria-label="flower colours"><span class="swatches" aria-hidden="true"></span></summary>
-      <fieldset>
-        <legend class="sr-only">flower colours</legend>
-        <div class="presets" aria-label="colour presets">
-          <button type="button" data-preset="sis1" aria-label="sis1: apricot orange and carnation pink" aria-pressed="true" style="--a:#e99b7c;--b:#d990a6"></button>
-          <button type="button" data-preset="moon" aria-label="moon: violet and blue" aria-pressed="false" style="--a:#a79bbc;--b:#a4becb"></button>
-          <button type="button" data-preset="dawn" aria-label="dawn: gold and coral" aria-pressed="false" style="--a:#dfbc7d;--b:#d99b91"></button>
-          <button type="button" data-preset="original" aria-label="original: natural colours" aria-pressed="false" style="--a:#b88571;--b:#a69abd"></button>
-        </div>
-        <div class="custom-colours">
-          <input id="colour-a" aria-label="first bloom colour" type="color" value="#e99b7c" />
-          <input id="colour-b" aria-label="companion colour" type="color" value="#d990a6" />
-        </div>
-        <div class="actions">
-          <button type="button" id="cycle" aria-label="next colour preset"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></button>
-          <button type="button" id="replay" aria-label="bloom again"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9a8 8 0 1 1 0 7M5 3v6h6"/></svg></button>
-        </div>
-        <p id="palette-status" role="status" class="sr-only">sis1 palette</p>
-      </fieldset>
-    </details>
-    <script src="garden.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050612" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Astral Flowers</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+</head>
+<body>
+  <main aria-label="a living celestial bouquet">
+    <canvas id="herbarium" tabindex="0" aria-label="3D bouquet. Drag or use arrow keys to turn. Press Home to reset. Press Enter to awaken the flowers." aria-describedby="art-description"></canvas>
+    <p id="art-description" class="sr-only">Rose and lilac flowers bloom in a violet star field. Soft colored light follows their petal edges. Warm pollen and curved stems gather into a luminous bouquet. Turn the flowers to see their depth, or choose their colours.</p>
+  </main>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="astral flowers home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5 5l22 22M5 27 27 5"/><circle cx="16" cy="16" r="9"/></svg><span class="sr-only">astral flowers</span></a>
+
+  </header>
+  <div class="scene-tools" role="group" aria-label="bouquet controls">
+    <button id="replay-bloom" type="button" aria-label="bloom bouquet again"><svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width=".9" aria-hidden="true"><path d="M16 25V14M16 18C7 19 3 12 5 6c7 0 12 5 11 12ZM16 18c9 1 13-6 11-12-7 0-12 5-11 12Z"/><path d="M6 23a12 12 0 0 0 21-1m-1 5 1-5-5 1"/></svg></button>
+    <button id="motion" type="button" aria-pressed="true" aria-label="pause living motion"><span aria-hidden="true">Ⅱ</span><span class="tool-label sr-only">pause</span></button>
+    <button id="reset-view" type="button" aria-label="reset bouquet view"><span aria-hidden="true">↺</span><span class="tool-label sr-only">reset view</span></button>
+  </div>
+  <div id="loading" role="status" aria-label="loading flowers"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5v38M5 24h38M10 10l28 28M10 38l28-28"/><circle cx="24" cy="24" r="14"/></svg></div>
+  <div id="fallback" hidden role="img" aria-label="A still view of the luminous bouquet. Interactive 3D is unavailable in this browser."></div>
+  <details class="palette">
+    <summary aria-label="choose your flowers"><svg class="bouquet-symbol" viewBox="0 0 36 36" aria-hidden="true"><path d="m10 16 8 16 9-17M18 31V12"/><circle cx="10" cy="12" r="5"/><circle cx="26" cy="11" r="5"/><circle cx="18" cy="7" r="5"/></svg><span class="summary-mark" aria-hidden="true">+</span></summary>
+    <section class="flower-shop" aria-labelledby="picker-title">
+      <header class="shop-header"><h2 id="picker-title" class="sr-only">choose your flowers</h2><button type="button" id="close-picker" class="icon-button" aria-label="close flower picker">×</button></header>
+
+      <div class="bouquet-roles" role="group" aria-label="choose which flowers to change">
+        <button type="button" class="role-card" aria-label="choose main blooms" data-role="a" aria-pressed="true"><img class="role-flower" alt="" width="76" height="64" /><span class="sr-only"><span class="role-name">main blooms</span><strong id="name-a">rose</strong></span></button>
+        <button type="button" class="role-card" aria-label="choose companion blooms" data-role="b" aria-pressed="false"><img class="role-flower" alt="" width="76" height="64" /><span class="sr-only"><span class="role-name">companions</span><strong id="name-b">lilac</strong></span></button>
+      </div>
+      <div class="selection-heading sr-only"><h3 id="selection-title">pick your main blooms</h3><span>8 lights</span></div>
+      <div id="flower-options" class="flower-options" role="group" aria-labelledby="selection-title"></div>
+      <div class="custom-colours"><label class="custom-shade" id="custom-a"><span class="sr-only">mix a shade</span><input id="colour-a" aria-label="custom main bloom colour" type="color" value="#ff7892" /></label><label class="custom-shade" id="custom-b" hidden><span class="sr-only">mix a shade</span><input id="colour-b" aria-label="custom companion colour" type="color" value="#b49cff" /></label></div>
+      <div class="pairings"><h3 class="sr-only">or follow a constellation</h3><div class="presets" role="group" aria-label="bouquet pairings">
+        <button type="button" data-preset="nebula" aria-label="nebula pairing" aria-pressed="true" style="--a:#ff7892;--b:#b49cff"><span class="pair-flowers" aria-hidden="true">✦<i>✧</i></span><span class="sr-only">nebula</span></button>
+        <button type="button" data-preset="aurora" aria-label="aurora pairing" aria-pressed="false" style="--a:#62e4c4;--b:#6383ff"><span class="pair-flowers" aria-hidden="true">✦<i>✧</i></span><span class="sr-only">aurora</span></button>
+        <button type="button" data-preset="solstice" aria-label="solstice pairing" aria-pressed="false" style="--a:#ffc278;--b:#ff7892"><span class="pair-flowers" aria-hidden="true">✦<i>✧</i></span><span class="sr-only">solstice</span></button>
+      </div></div>
+      <p id="palette-status" class="sr-only" role="status">rose at the heart, lilac in orbit.</p>
+      <div class="actions"><button type="button" id="awaken" aria-label="awaken flowers"><span aria-hidden="true">✧</span></button><button type="button" id="keep-bouquet" aria-label="return to the bouquet"><span aria-hidden="true">↗</span></button></div>
+    </section>
+  </details>
+  <script type="module" src="garden.js"></script>
+</body>
 </html>

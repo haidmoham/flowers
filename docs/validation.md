@@ -1,5 +1,205 @@
 # Clustered ivory bouquet validation
 
+## Light level adjustment
+
+Checked on 2026-09-05. Deployment: `dpl_HKcHawJRt65RjBsaKfKUxQftQhy9`.
+At the user's request, petal emission was reduced by 28 percent and bloom
+strength changed from 0.38 to 0.30. Palette, geometry, motion, and controls
+are unchanged. The desktop render and live phone render were inspected.
+The fallback image was updated. Syntax and diff checks pass. All ten active
+production assets return HTTP 200 and match local bytes.
+
+## Romantic diffused light
+
+Checked on 2026-09-05. Deployment: `dpl_HNiF7AJNAda9uhY9RGer517Ev6ik`.
+Tracking: [issue 10](https://github.com/haidmoham/flowers/issues/10).
+
+The default bouquet now pairs rose with lilac. Continuous petal rims emit
+colored light through soft edge gradients. HDR bloom produces the surrounding
+halo. Dim warm pollen and low specular reflection retain the flower centers
+and petal folds. The palette controls still own independent complete meshes.
+
+The visual review compared the previous and new desktop and phone renders.
+It also covered the rose-lilac, mint-blue, and amber-rose pairings, a side view,
+the phone picker, and the bloom sequence. The new renders have visible colored
+halos and continuous luminous edges. The previous renders had mostly dark
+surfaces and fine veins. This is a visual judgment; romantic mood remains a
+matter of user taste.
+
+Local and live scene and bloom checks pass at desktop and phone sizes with no
+runtime errors or overflow. The full scene remains within 80 draw calls
+and 140,586 triangles. Geometry and bloom timing are unchanged. The fallback
+image was regenerated. All ten active production assets return HTTP 200 and
+match local bytes. Syntax and diff checks pass. Git landing remains paused.
+
+## Gradual bloom and softer light
+
+Checked on 2026-09-05. Deployment: `dpl_C9Z9hn8XfWATzqawkKywETRCAR7L`.
+Tracking: [issue 9](https://github.com/haidmoham/flowers/issues/9).
+
+The bouquet grows curved stems, then opens eight buds in sequence. All petals
+settle by fifteen seconds of active playback. The new wordless replay control
+retains colors and camera angle. Lower pollen emission, quieter veins, less
+specular reflection, and a wider low-strength bloom soften the light.
+
+`check-bloom.cjs` passes locally and on the live custom domain. Six measured
+stages at 0, 2, 4, 7, 11, and 15 seconds confirm stem growth, staggered opening,
+and independent mesh morph weights. Replay resets growth and resumes motion.
+Pause freezes growth. Camera reset preserves growth. Opening the picker shows
+the complete bouquet. Replay retains the selected palette.
+
+Local and live scene checks pass at 1440 by 1000, 390 by 844, and 320 by 568. Front,
+side, phone, picker, and six bloom-stage screenshots were inspected. The
+settled render uses at most 80 draw calls and 140,586 triangles. No runtime
+errors occurred. The scene remains wordless, with independent palette roles,
+bounded texture memory, no horizontal overflow, and a WebGL fallback.
+
+All ten active deployed assets return HTTP 200 and match local bytes. The
+fallback image was regenerated from the softer, fully open bouquet. Syntax
+and diff checks pass. Git landing remains paused; no commit or push was made.
+
+## Wordless 3D celestial scene
+
+Checked on 2026-09-05. Deployment: `dpl_J9NQNLRAPmAtGYv2PT7zgT1FwPWT`.
+Tracking: [issue 8](https://github.com/haidmoham/flowers/issues/8).
+
+The active scene now uses original 3D petal geometry, curved stems, instanced
+pollen, emissive veins, HDR bloom, spatial stars, floating light, and orbital
+paths. The previous ivory scene is preserved in `studies/ivory-botanical/`.
+The user cancelled the pending Git landing before this redesign. No commit,
+push, or merge was performed.
+
+`studies/celestial/check-scene.cjs` passes locally and on production at
+1440 by 1000, 390 by 844, and 320 by 568.
+
+- Every visible control is wordless. Accessible names and selected states remain.
+- Geometry depth spans 0.767 units within the main bloom. The eight flowers
+  occupy several distinct depths. Front and side screenshots were inspected.
+- Pointer and keyboard rotation change the rendered image. Reset, touch
+  response, motion pause/resume, and Escape focus restoration pass.
+- Both palette roles change complete meshes independently. Presets and custom
+  shades pass. The fixed specimen cache stays at sixteen after both roles
+  have been used. Custom shades do not grow texture memory.
+- The picker fits every tested viewport with no horizontal overflow. The
+  flower-role controls stay visible during scrolling. Reopening resets scroll.
+- Runtime errors: zero in normal rendering. Disabling WebGL 2 produces the
+  wordless still-image fallback and hides unavailable controls.
+- Full-frame rendering uses at most 80 draw calls and 136,426 triangles in
+  these checks, including post-processing. No device-independent FPS claim
+  is made. Pixel ratio is bounded and hidden tabs stop their animation loop.
+- All ten active runtime, fallback, and license assets return HTTP 200 and
+  match local bytes. No third-party runtime requests or flat bouquet image
+  requests occur in the 3D scene. Syntax and diff checks pass.
+
+The [rendering research](celestial-rendering-research.md) records primary
+sources, the WebGL 2 versus WebGPU decision, and the visual effect boundaries.
+
+## Petal region isolation
+
+Checked on 2026-09-05. Deployment: `dpl_7N3xm4iVYTSurbn1gz3Se6LXFhgs`.
+Tracking: [issue 7](https://github.com/haidmoham/flowers/issues/7).
+
+The source-aligned `petal-mask.png` replaces overlapping colour ellipses and
+the lower-petal fade. The mask is 65,403 bytes. Each texel has at most one
+nonzero palette channel. The generator asserts this invariant.
+
+- A repeatable browser check covers 32 source-anchored pixels across main
+  petals, companion petals, touching blooms, low flowers, buds, and native
+  material. It changes each role independently with high-contrast colours.
+  Opposite-role and native samples change by at most one RGB step; selected
+  petal samples change by more than twenty. This passes locally and live.
+- Separate 5 by 5 peony and cosmos centre patches stay pixel-identical when
+  both selected colours change.
+- Contrast screenshots and the normal desktop and phone layouts were inspected.
+  Both reveal modes still settle on pixel-identical artwork at 21 seconds.
+- Live desktop and phone tests pass for palette, custom shade, keyboard mode
+  selection, replay, dismissal, and fallback. No runtime errors or horizontal
+  overflow were found. All eight specimen previews load.
+- JavaScript syntax and diff checks pass. All ten deployed assets return
+  HTTP 200 and exactly match their local contents.
+
+The mask is specific to this botanical source. A material change requires
+new contours and another visual boundary check.
+
+## Real flower inspiration
+
+Checked on 2026-09-05. Deployment: `dpl_BHztvCTgi6K49NDr6A16KKSEhAfn`.
+Tracking: [issue 6](https://github.com/haidmoham/flowers/issues/6).
+
+The active generated material now uses peony, ranunculus, cosmos, and dahlia
+forms. The previous material remains a separate asset. The renderer, preload,
+picker specimens, and fallback use `material-botanical.webp` (220,240 bytes).
+
+- Desktop and phone palette, custom shade, mode, replay, and dismissal checks
+  pass without runtime errors or horizontal overflow.
+- Peony and cosmos centre samples remain pixel-identical when both petal
+  colours change. Foliage retention was inspected in the rendered bouquet.
+- Fixed-time ripple stages were inspected. Both reveal modes settle on
+  pixel-identical artwork at 21 seconds.
+- Forced no-WebGL displays the static botanical artwork and hides the picker.
+- JavaScript syntax and diff checks pass. The image size remains 1122 × 1402.
+- All nine deployed assets return HTTP 200 and match local SHA-256 hashes.
+  Live mode, keyboard, palette, and specimen-selection checks pass.
+
+## Reference palette and ripple reveal
+
+Checked on 2026-09-05. Deployment: `dpl_HZZGtLD8hAcySq6yLVqrT1k8CmzW`.
+Tracking: [issue 5](https://github.com/haidmoham/flowers/issues/5).
+
+The live reference supplied eight exact pigment values and the expanding
+pigment motif. Ripple is the default. The mode switch also retains the original
+bloom reveal. Neither mode changes `dye()` or the material texture.
+
+- Fixed-time visual checks cover 4, 6, 9, 13, and 21 seconds.
+- Canvas screenshots at 21 seconds are pixel-identical between modes with
+  controls hidden. Overlapping fronts have no hard region boundaries.
+- Mode buttons work with pointer and keyboard input. Exactly one mode is selected.
+- Palette, custom shade, preset, replay, and dismissal checks pass at 1440 × 1000,
+  390 × 844, 320 × 568, and 844 × 390. No horizontal overflow or runtime errors.
+- Forced no-WebGL keeps the static artwork and hides the unavailable picker.
+- JavaScript syntax and diff checks pass. The ripple field is skipped after
+  18 seconds to avoid its ongoing fragment cost.
+- All eight deployed assets return HTTP 200 and match local SHA-256 hashes.
+  Live checks confirm both modes, keyboard selection, exact palette values,
+  and specimen selection without runtime errors.
+
+## Richer pigment and responsive flower controls
+
+Checked on 2026-09-04. Deployment: `dpl_2oigE8e7jHwHkkkBydjhXsWZDUT6`.
+The user found the previous revision too muted and stale. Eight stronger shades
+and less cream in the shared shader preserve colour in the flowers. The counter
+uses berry ink, fresh ivory, and accents from the selected flower. Changed
+specimens lift and settle once. Reduced motion disables that response.
+
+Desktop and phone selection, custom shades, pairings, replay, keyboard dismissal,
+and fallback checks pass. The selection animation runs with normal preferences
+and does not run with reduced motion. JavaScript syntax and diff checks pass.
+
+## Bouquet flower counter and autumn frame
+
+Checked on 2026-09-04. Production deployment: `dpl_D1q8D2BiUYEFaq4dhHX3e1tgk6sQ`.
+Tracking: [issue 4](https://github.com/haidmoham/flowers/issues/4).
+
+- JavaScript syntax and `git diff --check` pass.
+- Live browser checks pass at 1440 × 1000, 390 × 844, 320 × 568, and 844 × 390.
+- Selecting a specimen changes only the active main or companion colour value.
+  The rendered canvas changes, and selected-state labels match the chosen shade.
+- All three pairings set both colour values. Custom shades clear preset selection.
+- Enter opens the counter. Escape closes it and restores trigger focus.
+  Outside press, the close control, and the return control dismiss it.
+- Replay closes the counter and restarts the animation clock. Opening the counter
+  shows the complete bouquet for colour comparison.
+- All eight specimen images render. The counter fits each viewport without
+  horizontal overflow. Short screens scroll. Browser error collections are empty.
+- Forced no-WebGL displays the static artwork and hides the unavailable controls.
+- All eight live HTML, JavaScript, CSS, SVG, image, and metadata assets return
+  HTTP 200 and match local SHA-256 hashes.
+- Original root artwork files have no diff. No build step or dependency was added.
+
+Browser checks use a temporary Playwright diagnostic script. Viewports are
+simulated on this Windows machine. Physical phone testing and user taste approval
+remain outside this verification. The two design-library captures are candidates.
+
 ## Carnation colour correction
 
 Checked on 2026-09-04. Deployment: `dpl_DPseHx2RQ4hAEQmUrZmXv9YZL7sh`.

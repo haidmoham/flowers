@@ -16,8 +16,9 @@ No install or build step is required.
 
 ## Astral Flowers
 
-The separate artwork in [`astral/`](astral/) reveals clusters of fragile,
-translucent flowers on ivory. The original p5.js piece remains at the root.
+The separate artwork in [`astral/`](astral/) grows a wordless 3D bouquet with
+soft colored light. The original p5.js piece remains at the root. The earlier
+ivory scene is preserved in [`studies/ivory-botanical/`](studies/ivory-botanical/).
 
 With the same local server, open `http://127.0.0.1:4173/astral/`.
 The Vercel project deploys only the `astral/` directory.
