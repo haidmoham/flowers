@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" fill="none">
+  <defs>
+    <!-- Original maple silhouette. The source site supplies the visual reference. -->
+    <path id="leaf" d="m0-30 7 15 8-8-1 15 15-4-7 12 8 5-22 7 3 12-10-6-9 7 2-13-20-6 9-6-7-11 14 4-1-15 8 7Z"/>
+    <g id="sprig"><use href="#leaf" fill="currentColor"/><path d="M0-23 1 31M1 7-15-1M1 4 16-4" stroke="#896743" stroke-width=".5" opacity=".3"/></g>
+  </defs>
+  <g stroke="#a78a5e" stroke-width=".8" opacity=".12">
+    <path d="M-30 18Q260 216 648 8T1470 78"/>
+    <path d="M1180-30Q1490 200 1360 490T1470 865"/>
+    <path d="M-30 858Q150 1002 420 1050"/>
+  </g>
+  <g color="#b59a58" opacity=".075">
+    <use href="#sprig" transform="translate(34 61) rotate(-24) scale(1.4)"/>
+    <use href="#sprig" transform="translate(237 110) rotate(32) scale(.9)"/>
+    <use href="#sprig" transform="translate(391 73) rotate(-12) scale(1.15)"/>
+    <use href="#sprig" transform="translate(724 10) rotate(20) scale(.8)"/>
+    <use href="#sprig" transform="translate(1269 30) rotate(56) scale(1.35)"/>
+    <use href="#sprig" transform="translate(1407 214) rotate(74) scale(1.2)"/>
+    <use href="#sprig" transform="translate(1360 408) rotate(14) scale(.8)"/>
+    <use href="#sprig" transform="translate(1397 710) rotate(-50) scale(.9)"/>
+    <use href="#sprig" transform="translate(45 925) rotate(-32) scale(1.1)"/>
+    <use href="#sprig" transform="translate(256 994) rotate(41) scale(.8)"/>
+  </g>
+  <g color="#b67d55" opacity=".065">
+    <use href="#sprig" transform="translate(132 76) rotate(18) scale(1.25)"/>
+    <use href="#sprig" transform="translate(320 112) rotate(-20) scale(.6)"/>
+    <use href="#sprig" transform="translate(487 65) rotate(12) scale(.85)"/>
+    <use href="#sprig" transform="translate(1377 118) rotate(-25) scale(1.3)"/>
+    <use href="#sprig" transform="translate(1390 321) rotate(30) scale(1.1)"/>
+    <use href="#sprig" transform="translate(1405 526) rotate(-14) scale(.7)"/>
+    <use href="#sprig" transform="translate(30 841) rotate(35) scale(.75)"/>
+    <use href="#sprig" transform="translate(151 977) rotate(-42) scale(1.1)"/>
+  </g>
+</svg>

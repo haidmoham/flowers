@@ -1,5 +1,12 @@
 # Current direction
 
+## Living 3D bouquet
+
+The active scene is a wordless Three.js bouquet with staggered blooming,
+independent flower colors, and diffused rose-lilac light. See the
+[rendering research](celestial-rendering-research.md) and
+[validation](validation.md). The earlier directions below are historical.
+
 ## Wordless palettes and astral light
 
 The latest correction calls for carnation pigment rather than lens flares.

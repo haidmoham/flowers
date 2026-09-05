@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6efe4" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Astral Flowers</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="material-botanical.webp" as="image" />
+    <link rel="preload" href="arrival.png" as="image" />
+  </head>
+  <body>
+    <main aria-label="An astral bouquet on ivory">
+      <canvas id="herbarium" role="img" aria-describedby="art-description"></canvas>
+      <p id="art-description" class="sr-only">
+        Fine stems gather into a bouquet inspired by peonies, ranunculus, cosmos,
+        and dahlias on warm ivory. Rounded petals open in cupped and layered forms,
+        with golden flower centres and green foliage.
+        Loose buds, luminous dust, and fine orbits surround the bouquet.
+      </p>
+    </main>
+    <div class="reveal-modes" role="group" aria-label="flower reveal">
+      <button type="button" data-mode="bloom" aria-label="bloom animation" aria-pressed="false"><span aria-hidden="true">✿</span> bloom</button>
+      <button type="button" data-mode="ripple" aria-label="ripple animation" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="11"/></svg> ripple</button>
+    </div>
+    <details class="palette">
+      <summary aria-label="choose your flowers"><span class="swatches" aria-hidden="true">✿</span><span>choose your flowers</span><span class="summary-mark" aria-hidden="true">+</span></summary>
+      <section class="flower-shop" aria-labelledby="picker-title">
+        <header class="shop-header">
+          <div><p class="eyebrow">a little flower counter</p><h1 id="picker-title">gather your colours</h1></div>
+          <button type="button" id="close-picker" class="icon-button" aria-label="close flower picker">×</button>
+        </header>
+        <p class="intro">a bloom you love. a colour to keep it company.</p>
+        <div class="bouquet-roles" role="group" aria-label="choose which flowers to change">
+          <button type="button" class="role-card" data-role="a" aria-pressed="true">
+            <img class="role-flower" alt="" width="76" height="64" />
+            <span><span class="role-name">main blooms</span><strong id="name-a">coral</strong><span class="role-location">heart of the bouquet</span></span>
+            <span class="role-marker" aria-hidden="true">1</span>
+          </button>
+          <button type="button" class="role-card" data-role="b" aria-pressed="false">
+            <img class="role-flower" alt="" width="76" height="64" />
+            <span><span class="role-name">companions</span><strong id="name-b">magenta</strong><span class="role-location">surrounding flowers</span></span>
+            <span class="role-marker" aria-hidden="true">2</span>
+          </button>
+        </div>
+        <div class="selection-heading"><h2 id="selection-title">pick your main blooms</h2><span>8 shades</span></div>
+        <div id="flower-options" class="flower-options" role="group" aria-labelledby="selection-title"></div>
+        <div class="custom-colours">
+          <span>have a shade in mind?</span>
+          <label class="custom-shade" id="custom-a">mix your own<input id="colour-a" aria-label="custom main bloom colour" type="color" value="#d34a32" /></label>
+          <label class="custom-shade" id="custom-b" hidden>mix your own<input id="colour-b" aria-label="custom companion colour" type="color" value="#ad3e70" /></label>
+        </div>
+        <div class="pairings">
+          <h2>or start with a pairing</h2>
+          <div class="presets" role="group" aria-label="bouquet pairings">
+            <button type="button" data-preset="sis1" aria-label="coral and magenta pairing" aria-pressed="true" style="--a:#d34a32;--b:#ad3e70"><span class="pair-flowers" aria-hidden="true">✿<i>✿</i></span>garden warmth</button>
+            <button type="button" data-preset="moon" aria-label="violet and cornflower pairing" aria-pressed="false" style="--a:#6872ad;--b:#557cae"><span class="pair-flowers" aria-hidden="true">✿<i>✿</i></span>blue hour</button>
+            <button type="button" data-preset="dawn" aria-label="gold and coral pairing" aria-pressed="false" style="--a:#ddb946;--b:#d34a32"><span class="pair-flowers" aria-hidden="true">✿<i>✿</i></span>golden hour</button>
+          </div>
+        </div>
+        <p id="palette-status" role="status">coral at the heart, magenta around it.</p>
+        <div class="actions">
+          <button type="button" id="replay">↻ bloom again</button>
+          <button type="button" id="keep-bouquet">back to bouquet <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+    </details>
+    <script src="garden.js"></script>
+  </body>
+</html>
