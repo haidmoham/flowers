@@ -1,6 +1,8 @@
 :root {
   background: #f6efe4;
   color-scheme: light;
+  --colour-a: #e99b7c;
+  --colour-b: #d990a6;
 }
 
 * {
@@ -65,3 +67,57 @@ main:has(canvas.fallback)::after {
   white-space: nowrap;
   border: 0;
 }
+
+.palette {
+  position: fixed;
+  z-index: 2;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  right: max(24px, env(safe-area-inset-right));
+  color: #5d4c56;
+  font: 12px/1.5 system-ui, sans-serif;
+}
+
+.palette summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #9c79852b;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #fffaf2e8;
+}
+
+.palette summary::-webkit-details-marker { display: none; }
+.swatches {
+  width: 24px;
+  height: 14px;
+  background: radial-gradient(circle at 7px 7px, var(--colour-a) 6px, transparent 7px),
+    radial-gradient(circle at 17px 7px, var(--colour-b) 6px, transparent 7px);
+}
+.palette fieldset {
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  width: 234px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #9c79852b;
+  border-radius: 18px;
+  background: #fffaf2f5;
+  box-shadow: 0 8px 40px #6547560c;
+}
+.custom-colours { display: flex; gap: 12px; border-top: 1px solid #9c798525; padding-top: 16px; }
+.palette input { width: 50%; height: 44px; padding: 4px; border: 1px solid #9c798540; border-radius: 12px; background: transparent; cursor: pointer; }
+.presets { display: flex; gap: 4px; margin-bottom: 16px; }
+.palette button { font: inherit; color: inherit; cursor: pointer; min-height: 44px; padding: 8px 14px; border: 1px solid #9c798540; border-radius: 20px; background: transparent; }
+.presets button { width: 44px; padding: 0; border-color: transparent; position: relative; flex-shrink: 0; }
+.presets button::after { content: ''; position: absolute; inset: 9px; border-radius: 50%; background: linear-gradient(125deg,var(--a) 48%,var(--b) 52%); }
+.palette button[aria-pressed="true"] { border-color: #96727e; }
+.actions { display: flex; justify-content: space-between; margin-top: 16px; }
+.actions button { width: 44px; padding: 10px; border: 0; }
+.actions svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+:focus-visible { outline: 2px solid #a84171; outline-offset: 4px; }
+@media (max-width: 600px) { .palette { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); } }

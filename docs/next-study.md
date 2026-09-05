@@ -1,5 +1,26 @@
 # Current direction
 
+## Wordless palettes and astral light
+
+The latest correction calls for carnation pigment rather than lens flares.
+Use soft apricot and pink in `sis1`. Preserve shade in the folds. Remove flare
+rays and spectral sheen. Keep the aura and orbital traces faint.
+
+The current request retains the approved translucent material and brings back
+directional cues from the p5.js composition. Use its uneven cluster, loose buds,
+and curved traces. Do not change the source photograph into a p5.js rendering.
+
+The default `sis1` palette favours bright orange and pink. A wordless disclosure
+opens four preset swatches, two custom colour wells, cycling, and replay.
+Accessible names remain in markup. No visible words appear in the interface.
+Spectral highlights, sparse glints, an aura, and fine orbits establish the astral
+feeling. The slow ambient light continues after the eighteen-second reveal.
+
+The earlier choices below describe the previous revision. The current request
+supersedes the restrictions on palette controls, composition cues, and stillness.
+
+## Previous clustered direction
+
 The user approved the translucent photographic material. The next instruction
 preserves that material and adds clustered bouquet composition with an ivory
 background. `studies/clustered-exposure/` contains the current material and map
