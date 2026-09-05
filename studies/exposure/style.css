@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+html, body, main { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #130b10; }
+main { position: relative; }
+canvas { display: block; width: 100%; height: 100%; touch-action: manipulation; }
+canvas.fallback { visibility: hidden; }
+main:has(canvas.fallback)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  height: min(98vh, 142.5vw);
+  aspect-ratio: 4 / 5;
+  transform: translate(-50%, -50%);
+  background: url('material.webp') center / 100% 100% no-repeat;
+  mask-image: linear-gradient(to bottom, transparent, #000 6.5%, #000 93.5%, transparent), linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-composite: intersect;
+}
