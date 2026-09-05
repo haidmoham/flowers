@@ -1,0 +1,9 @@
+{
+  "name": "astralflowers-mhaider",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-04",
+  "account_id": "7ccfdec2aec5b063d5c1a1a476e4ca83",
+  "workers_dev": false,
+  "routes": [{ "pattern": "astralflowers.mhaider.dev", "custom_domain": true }],
+  "vars": { "ORIGIN": "https://astralflowers.vercel.app" }
+}

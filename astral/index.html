@@ -12,14 +12,35 @@
     <link rel="preload" href="arrival.png" as="image" />
   </head>
   <body>
-    <main aria-label="A clustered bouquet on ivory">
+    <main aria-label="An astral bouquet on ivory">
       <canvas id="herbarium" role="img" aria-describedby="art-description"></canvas>
       <p id="art-description" class="sr-only">
         Fine stems gather into clusters of translucent flowers on warm ivory.
-        A coral centre opens among lilac, cream, and blue-violet companions,
-        with delicate folds, exposed veins, and loose fibres.
+        Coloured petals open among delicate folds and exposed veins.
+        Loose buds, luminous dust, and fine orbits surround the bouquet.
       </p>
     </main>
+    <details class="palette">
+      <summary aria-label="flower colours"><span class="swatches" aria-hidden="true"></span></summary>
+      <fieldset>
+        <legend class="sr-only">flower colours</legend>
+        <div class="presets" aria-label="colour presets">
+          <button type="button" data-preset="sis1" aria-label="sis1: bright orange and pink" aria-pressed="true" style="--a:#ff680a;--b:#ff2796"></button>
+          <button type="button" data-preset="moon" aria-label="moon: violet and blue" aria-pressed="false" style="--a:#945bff;--b:#47caff"></button>
+          <button type="button" data-preset="dawn" aria-label="dawn: gold and coral" aria-pressed="false" style="--a:#ffc629;--b:#ff645e"></button>
+          <button type="button" data-preset="original" aria-label="original: natural colours" aria-pressed="false" style="--a:#b88571;--b:#a69abd"></button>
+        </div>
+        <div class="custom-colours">
+          <input id="colour-a" aria-label="first bloom colour" type="color" value="#ff680a" />
+          <input id="colour-b" aria-label="companion colour" type="color" value="#ff2796" />
+        </div>
+        <div class="actions">
+          <button type="button" id="cycle" aria-label="next colour preset"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></button>
+          <button type="button" id="replay" aria-label="bloom again"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9a8 8 0 1 1 0 7M5 3v6h6"/></svg></button>
+        </div>
+        <p id="palette-status" role="status" class="sr-only">sis1 palette</p>
+      </fieldset>
+    </details>
     <script src="garden.js"></script>
   </body>
 </html>

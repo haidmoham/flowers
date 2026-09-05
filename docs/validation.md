@@ -1,5 +1,34 @@
 # Clustered ivory bouquet validation
 
+## Wordless astral palette revision
+
+Checked and deployed on 2026-09-04 after explicit approval for both domains.
+Vercel deployment: `dpl_5qEepL2bMAqgb8733qR7S7dtD3MD`.
+Cloudflare routing version: `b3f69552-9cec-4589-8ad5-4516ca9d62b2`.
+Tracking: <https://github.com/haidmoham/flowers/issues/2>.
+
+- JavaScript syntax and `git diff --check` pass.
+- The original p5.js source files have no diff.
+- Desktop browser inspection confirms orange/pink flower groups and retained veins.
+- Preset selection, cycling, wraparound to `sis1`, and custom green/violet colours work.
+- Replay returns to the beginning. Escape closes the panel and restores summary focus.
+- Phone inspection at 390 × 844 confirms a working renderer, zero horizontal overflow,
+  no visible words, and accessible control names. The panel fits the viewport.
+- No browser warning or error was reported on the checked page.
+- Both custom domains render the new artwork and wordless controls in the browser.
+- The five checked HTML, script, stylesheet, material, and arrival assets on
+  `astralflowers.shin86.dev` return HTTP 200 and match local SHA-256 hashes.
+- Plain Python requests to the Cloudflare hostname receive error 1010. Browser
+  requests succeed. No Cloudflare security setting was changed for this check.
+- The no-WebGL path retains the static source artwork and hides the palette by source
+  inspection. Failure injection and physical-phone performance were not tested here.
+
+The image itself is unchanged. Palette mapping, orbital traces, ambient light, and
+three peripheral buds are runtime shader operations. User taste remains the final
+judge of the astral treatment.
+
+## Previous deployed revision
+
 Checked on 2026-09-04. Production deployment: `dpl_B48NVS7CMfMhxPfkbxnpCeXydouV`.
 
 Desktop (1440 × 1000) and simulated phone (390 × 844, DPR 2) completed
