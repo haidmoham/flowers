@@ -1,0 +1,226 @@
+:root {
+  background: #f6efe4;
+  color-scheme: light;
+  --colour-a: #d34a32;
+  --colour-b: #ad3e70;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #f6efe4;
+}
+
+main {
+  position: relative;
+  height: 100%;
+  min-height: 100svh;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+canvas.fallback {
+  visibility: hidden;
+}
+
+.reveal-modes {
+  position: fixed;
+  z-index: 2;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  display: flex;
+  gap: 4px;
+}
+.reveal-modes[hidden] { display: none; }
+.reveal-modes button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 7px 11px;
+  border: 1px solid transparent;
+  border-radius: 24px;
+  background: #fffaf360;
+  color: #805969;
+  font: 11px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+.reveal-modes button[aria-pressed="true"] { border-color: #b17c853d; background: #fffaf3df; color: #873557; }
+.reveal-modes button:hover { background: #fffaf3; }
+.reveal-modes span { font-size: 23px; line-height: 1; }
+.reveal-modes svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: .8; }
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url('autumn.svg') center / 100% 100% no-repeat;
+}
+
+main:has(canvas.fallback)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  height: min(98vh, 142.5vw);
+  aspect-ratio: 4 / 5;
+  transform: translate(-50%, -50%);
+  background: url("material-botanical.webp") center / 100% 100% no-repeat;
+  mask-image:
+    linear-gradient(to bottom, transparent, #000 6.5%, #000 93.5%, transparent),
+    linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-composite: intersect;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Fresh ivory and berry ink let each flower supply its own accent. */
+.palette {
+  position: fixed;
+  z-index: 2;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  right: max(28px, env(safe-area-inset-right));
+  color: #593947;
+  font: 12px/1.5 system-ui, sans-serif;
+  --ink: #593947;
+  --muted: #80616b;
+  --line: #b17c852f;
+  --paper: #fffaf3;
+}
+.palette summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  cursor: pointer;
+  background: #fffaf3;
+  box-shadow: 0 4px 24px #bd62851a;
+}
+.palette summary::-webkit-details-marker { display: none; }
+.swatches { color: var(--colour-a); text-shadow: 7px 2px var(--colour-b); font-size: 25px; margin-right: 6px; line-height: 1; }
+.summary-mark { margin-left: 8px; font-size: 19px; color: var(--muted); }
+.palette[open] .summary-mark { transform: rotate(45deg); }
+.flower-shop {
+  position: absolute;
+  bottom: 58px;
+  right: 0;
+  width: 372px;
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px 18px 6px 18px;
+  background: var(--paper);
+  background-image: radial-gradient(ellipse at top left, #f8d5df45, transparent 48%), radial-gradient(ellipse at bottom right, #fce8b530, transparent 45%);
+  box-shadow: 0 14px 55px #9d52691a;
+}
+.shop-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.eyebrow { margin: 0 0 3px; color: #a04769; font-size: 10px; letter-spacing: .12em; }
+h1 { margin: 0; font: 28px/1.2 Georgia, serif; font-weight: normal; letter-spacing: -.025em; }
+.intro { margin: 10px 0 18px; color: var(--muted); font: italic 13px/1.5 Georgia, serif; }
+.palette button { font: inherit; color: inherit; cursor: pointer; min-height: 44px; padding: 8px; border: 1px solid var(--line); background: transparent; border-radius: 8px; -webkit-tap-highlight-color: transparent; }
+.palette .icon-button { border: 0; font-size: 25px; min-width: 44px; font-weight: 200; }
+.bouquet-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.palette .role-card { position: relative; display: flex; align-items: center; flex-direction: column; padding: 8px 6px 12px; text-align: center; border-radius: 9px; }
+.role-flower { display: block; object-fit: contain; width: 82px; height: 62px; }
+.role-name { display: block; color: var(--muted); font-size: 10px; }
+.role-card strong { display: block; font: normal 19px/1.4 Georgia, serif; }
+.role-location { display: block; font-size: 9px; color: var(--muted); }
+.role-marker { position: absolute; top: 8px; left: 10px; font: italic 12px Georgia, serif; color: var(--muted); }
+.role-card[data-role="a"] { --petal: var(--colour-a); }
+.role-card[data-role="b"] { --petal: var(--colour-b); }
+.palette .role-card { background: color-mix(in srgb, var(--petal) 5%, var(--paper)); transition: background 200ms, border-color 200ms; }
+.palette .role-card[aria-pressed="true"] { border-color: color-mix(in srgb, var(--petal) 75%, #593947); background: color-mix(in srgb, var(--petal) 16%, var(--paper)); box-shadow: inset 0 -3px color-mix(in srgb, var(--petal) 75%, #593947); }
+.selection-heading { margin: 18px 0 6px; display: flex; justify-content: space-between; align-items: baseline; }
+h2 { font: inherit; font-weight: 500; margin: 0; }
+.selection-heading > span { font-size: 10px; color: var(--muted); }
+.flower-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.palette .flower-option { position: relative; display: flex; flex-direction: column; align-items: center; padding: 5px 0 7px; border-color: transparent; font-size: 11px; transition: background 160ms, border-color 160ms; }
+.flower-option img { width: 68px; height: 51px; object-fit: contain; transition: transform 180ms ease; }
+.flower-option:hover img { transform: translateY(-5px) rotate(-5deg) scale(1.1); }
+.palette .flower-option:hover { background: color-mix(in srgb, var(--petal) 12%, var(--paper)); }
+.palette .flower-option[aria-pressed="true"] { border-color: color-mix(in srgb, var(--petal) 75%, #593947); background: color-mix(in srgb, var(--petal) 19%, var(--paper)); }
+.flower-option[aria-pressed="true"]::after { content: '✓'; position: absolute; right: 5px; top: 1px; font-size: 10px; color: #604b3c; }
+.custom-colours { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 8px 0 13px; font-size: 10px; color: var(--muted); }
+.custom-shade { display: flex; align-items: center; gap: 7px; color: var(--ink); cursor: pointer; min-height: 44px; }
+.custom-shade[hidden] { display: none; }
+.custom-shade input { width: 28px; height: 30px; padding: 2px; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; }
+.custom-shade input::-webkit-color-swatch-wrapper { padding: 2px; }
+.custom-shade input::-webkit-color-swatch { border: 0; border-radius: 50%; }
+.pairings { border-top: 1px solid var(--line); padding-top: 13px; }
+.presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 8px; }
+.palette .presets button { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 10px; border-color: transparent; }
+.palette .presets button[aria-pressed="true"] { border-color: color-mix(in srgb, var(--b) 55%, var(--paper)); background: linear-gradient(120deg, color-mix(in srgb, var(--a) 13%, var(--paper)), color-mix(in srgb, var(--b) 13%, var(--paper))); }
+.pair-flowers { color: var(--a); font-size: 24px; line-height: 1.2; }
+.pair-flowers i { display: inline-block; font-style: normal; color: var(--b); margin-left: -5px; transform: translateY(3px) rotate(18deg); }
+#palette-status { min-height: 18px; margin: 12px 0; color: var(--muted); font: italic 12px/1.5 Georgia, serif; text-align: center; }
+.actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+.palette #replay { border: 0; font-size: 11px; }
+.palette #keep-bouquet { padding: 8px 14px; background: #a83f66; color: #fffaf3; border-color: #a83f66; font-size: 11px; box-shadow: 0 3px 10px #a83f6620; }
+.palette #keep-bouquet:hover { background: #913355; }
+:focus-visible { outline: 2px solid #a83f66; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .palette { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
+  .flower-shop { width: min(372px, calc(100vw - 24px)); max-height: min(62dvh, 610px); bottom: 56px; padding: 16px; }
+  h1 { font-size: 25px; }
+  .intro { margin-bottom: 12px; }
+  .palette .role-card { flex-direction: row; text-align: left; padding: 10px 5px; gap: 3px; }
+  .role-flower { width: 45px; height: 49px; }
+  .role-card strong { font-size: 17px; }
+  .role-location { font-size: 8px; }
+  .role-marker { display: none; }
+  .selection-heading { margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flower-option img, .palette .flower-option, .palette .role-card { transition: none; }
+}
+@media (max-height: 650px) {
+  .flower-shop { padding: 14px; }
+  h1 { font-size: 22px; }
+  .intro { display: none; }
+  .eyebrow { font-size: 8px; }
+  .bouquet-roles { margin-top: 8px; }
+  .palette .role-card { flex-direction: row; text-align: left; padding: 7px 5px; gap: 4px; }
+  .role-flower { width: 42px; height: 46px; }
+  .role-marker { display: none; }
+  .role-card strong { font-size: 17px; }
+  .role-location { font-size: 8px; }
+  .selection-heading { margin-top: 10px; }
+}
