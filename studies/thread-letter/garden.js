@@ -76,5 +76,3 @@
   function run(){cancelAnimationFrame(raf);last=null;raf=requestAnimationFrame(frame);}
   addEventListener('resize',resize);document.addEventListener('visibilitychange',()=>{last=null;});reduced.addEventListener('change',()=>{draw();if(!reduced.matches)run();});resize();run();
 })();
-
-
